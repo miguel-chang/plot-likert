@@ -1,0 +1,252 @@
+question:
+  - id: 1
+    text: "Which country do you currently work in?"
+    alias: "country"
+    col_start: 6
+  - id: 2
+    text: "What type of institution or sector best describes your affiliation?"
+    alias: "affiliation_type"
+    scale:
+      - "University/Academia"
+      - "Research institute"
+      - "Private consultancy"
+      - "Government agency"
+      - "Industry company"
+      - "Charity / NGO / Not-for-profit organization"
+      - "Other"
+    col_start: 7
+  - id: 3
+    text: "How many years of experience do you have as an energy system modelling practitioner?"
+    alias: "experience_years"
+    scale:
+      - "< 1 year"
+      - "1-2 years"
+      - "2-5 years"
+      - "5-8 years"
+      - "8+ years"
+      - "N/A"
+    col_start: 8
+  - id: 4
+    text: "In your opinion, how does your model output compare to observed trends or reflects the impacts of the following metrics?"
+    alias: "perceived_bias"
+    scale:
+      - "Underestimated"
+      - "Somewhat underestimated"
+      - "Accurately represented"
+      - "Somewhat overestimated"
+      - "Overestimated"
+      - "N/A"
+    metrics:
+      - "Profitablity of variable renewable electricity generation"
+      - "Profitablity of dispatchable electricity generation"
+      - "Need for flexibility (e.g., batteries and thermal storage)"
+      - "Process flexibility (e.g., end use flexibility or plant flexibility)"
+      - "Investments in end-use technologies"
+      - "Central energy solutions over local energy solutions"
+      - "Impact of transmission bottlenecks"
+      - "Investments and electricity flows in transmission lines"
+      - "Investments and transport flows in fluid/gas pipelines"
+      - "Effect of policy instruments"
+      - "Impact of investment decisions during the whole transition"
+      - "Comparable level of detail between competing options"
+    col_start: 9
+  - id: 5
+    text: "Elaborate if other, or if you wish to expand your answers"
+    alias: "perceived_bias_text"
+    col_start: 21
+  - id: 6
+    text: "Which of the following have you used to address or limit perceived biases in your model?"
+    alias: "addressing_bias"
+    scale:
+      - "Never"
+      - "Rarely"
+      - "Sometimes"
+      - "Typically"
+      - "Always"
+      - "N/A"
+    metrics:
+      - "Increasing the temporal resolution"
+      - "Including more technology options"
+      - "Enabling additional techno-economic parameters"
+      - "Increasing the spatial resolution"
+      - "Increasing the sectoral coverage/representation"
+      - "Coupling/linking with other models with distinct scope(s)"
+      - "Applying stochastic modelling"
+      - "Applying multi-objective optimization"
+      - "Applying modelling to generate alternative (MGA) techniques"
+      - "Adapting the underlying formulation of the model"
+      - "Via multi-criteria decision analysis of simulated scenarios (MCDA)"
+      - "Sensitivity analysis"
+      - "Qualitative assessments (e.g., discussion of limitations)"
+    col_start: 22
+  - id: 7
+    text: "Elaborate if other, or if you wish to expand your answers"
+    alias: "addressing_bias_text"
+    col_start: 35
+  - id: 8
+    text: "How experienced are you with coupling energy system models with other decision-support tools or models?"
+    alias: "model_coupling_experience"
+    scale:
+      - "No experience"
+      - "Limited experience"
+      - "Some experience"
+      - "Experienced"
+      - "Very experienced (major part of my work)"
+    col_start: 36
+  - id: 9
+    text: "In your opinion, were any of the following your main reason(s) to undertake a model linking approach?"
+    alias: "model_coupling_motivation"
+    scale:
+      - "No"
+      - "Yes"
+      - "N/A"
+    metrics:
+      - "Expanding regional coverage"
+      - "Improving technical details"
+      - "Improving sectoral detail"
+      - "Enhancing operational and market details"
+      - "Including energy & service demands"
+      - "Including non-energy aspects"
+      - "Testing scenario robustness and/or resource adequacy"
+      - "Conducting power flow simulations on linear model outputs"
+      - "Improving the representation of the transmission system and/or other energy transport"
+      - "It was set by the project description"
+    col_start: 37
+  - id: 10
+    text: "Elaborate if other, or if you wish to expand your answers"
+    alias: "model_coupling_motivation_text"
+    col_start: 47
+  - id: 11
+    text: "To what degree do you harmonize your models inputs when coupling/linking with other models?"
+    alias: "model_coupling_harmonization"
+    scale:
+      - "N/A"
+      - "Not considered"
+      - "Somewhat aligned"
+      - "Fully aligned"
+    metrics:
+      - "Alignment to a common storyline/scenario"
+      - "Harmonizing of techno-economic assumptions"
+      - "Harmonizing underlying drivers (GDP, population)"
+    col_start: 48
+  - id: 12
+    text: "If other, please elaborate"
+    alias: "model_coupling_harmonization_text"
+    col_start: 51
+  - id: 13
+    text: "How satisfied have you been with previous model linking experiences?"
+    alias: "model_coupling_satisfaction"
+    scale:
+      - "Very satisfied"
+      - "Somewhat satisfied"
+      - "Neither satisfied nor dissatisfied"
+      - "Somewhat dissatisfied"
+      - "Very dissatisfied"
+      - "N/A"
+    col_start: 52
+  - id: 14
+    text: "In your experience, what has been the major advantages and hurdle(s) for conducting model coupling?"
+    alias: "model_coupling_hurdles"
+    col_start: 53
+  - id: 15
+    text: "Which of the following non-energy and sector-specific perspectives have you integrated in previous modelling analyses and how?"
+    alias: "non_energy_perspectives"
+    scale:
+      - "Never"
+      - "Rarely"
+      - "Sometimes"
+      - "Typically"
+      - "Always"
+      - "N/A"
+    metrics:
+      - "Land use"
+      - "Biodiversity (i.e., number and diversity of species)"
+      - "Societal and stakeholder acceptance and preferences"
+      - "Environmental impact, e.g. LCA"
+      - "Material supply chains"
+      - "Employment generation"
+      - "Macro-economic impacts"
+      - "End-use behaviors and patterns"
+      - "Energy-Water-Nexus"
+    col_start: 54
+  - id: 16
+    text: "Elaborate if other, or if you wish to expand your answers"
+    alias: "non_energy_perspectives_text"
+    col_start: 63
+  - id: 17
+    text: "What underlying methodology is typically implemented in the model you use?"
+    alias: "model_methodology"
+    scale:
+      - "Simulation (heuristic-based)"
+      - "Optimization of operations (e.g. dispatch model/production cost model)"
+      - "Optimization of long-term investments & operation (capacity expansion)"
+      - "Other"
+    col_start: 64
+  - id: 18
+    text: "What are the geographical scope(s) typically represented in the model you use, and with what resolution level?"
+    alias: "spatial_scope"
+    col_start: 65
+  - id: 19
+    text: "To what extent are different end-use sectors' demands included?"
+    alias: "sectoral_coverage"
+    scale:
+      - "Not included"
+      - "As input assumptions, electricity demands (only)"
+      - "As input assumptions, energy demands (different carriers)"
+      - "Energy demands are model outputs based on specified service demands (heating, industrial output, etc.)"
+      - "Fully included"
+    metrics:
+      - "Buildings (Households and Services)"
+      - "Transport"
+      - "Industry"
+      - "Agriculture"
+    col_start: 66
+  - id: 20
+    text: "What foresight approach do you use in your model? (both for long-term planning and short-term operations)"
+    alias: "foresight"
+    scale:
+      - "Never"
+      - "Rarely"
+      - "Sometimes"
+      - "Typically"
+      - "Always"
+      - "N/A"
+    metrics:
+      - "Perfect foresight, long term planning (multiple periods)"
+      - "Limited foresight, long-term planning (multiple periods)"
+      - "Perfect foresight, operations"
+      - "Limited foresight, operations"
+      - "Single period / overnight foresight, long-term planning (1 target year)"
+    col_start: 70
+  - id: 21
+    text: "Elaborate if other, or if you wish to expand your answers"
+    alias: "foresight_text"
+    col_start: 75
+  - id: 22
+    text: "What temporal resolution (timesteps) do you consider for each modelled period?"
+    alias: "temporal_resolution"
+    scale:
+      - "Never"
+      - "Rarely"
+      - "Sometimes"
+      - "Typically"
+      - "Always"
+      - "N/A"
+    metrics:
+      - "Intra-hourly"
+      - "Hourly resolution"
+      - "Representative time-slices"
+      - "Non-uniform resolution"
+    col_start: 76
+  - id: 23
+    text: "Elaborate if other, or if you wish to expand your answers"
+    alias: "temporal_resolution_text"
+    col_start: 80
+  - id: 24
+    text: "If you know of studies related to the previous questions and topics in the survey, you are invited to provide links to those references?"
+    alias: "ref_studies"
+    col_start: 81
+  - id: 25
+    text: "Do you have any additional feedback regarding this survey questionnaire?"
+    alias: "additional_feedback"
+    col_start: 82

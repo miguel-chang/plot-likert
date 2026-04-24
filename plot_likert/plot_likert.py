@@ -56,6 +56,8 @@ def plot_counts(
     compute_percentages: bool = False,
     bar_labels: bool = False,
     bar_labels_color: typing.Union[str, typing.List[str]] = "white",
+    center_displacement: int = 0,
+    show_center_line: bool = True,
     **kwargs,
 ) -> matplotlib.axes.Axes:
     """
@@ -112,22 +114,43 @@ def plot_counts(
             counts_are_percentages = False
 
     # Pad each row/question from the left, so that they're centered around the middle (Neutral) response
-    scale_middle = len(scale) // 2
 
-    if scale_middle == len(scale) / 2:
-        middles = counts.iloc[:, 0:scale_middle].sum(axis=1)
+    # If show_center_line is not on, override centering and left-align
+    if show_center_line is False:
+        # No centering, padding is always zero
+        padding_values = pd.Series(0, index=counts.index)
+        padded_counts = pd.concat([padding_values, counts], axis=1)
+        padded_counts = padded_counts.rename({0: ""}, axis=1)
+        center = 0
     else:
-        middles = (
-            counts.iloc[:, 0:scale_middle].sum(axis=1)
-            + counts.iloc[:, scale_middle] / 2
-        )
+        # Centering logic as before
+        if (len(scale) % 2 == 0):
+            scale_middle = len(scale) // 2 + center_displacement
+        else:
+            scale_middle = len(scale) // 2
 
-    center = middles.max()
+        scale_middle = max(0, min(len(scale) - 1, scale_middle))
 
-    padding_values = (middles - center).abs()
-    padded_counts = pd.concat([padding_values, counts], axis=1)
-    # Hide the padding row from the legend
-    padded_counts = padded_counts.rename({0: ""}, axis=1)
+        # if len(scale) % 2 == 0:
+        #     middles = counts.iloc[:, 0:scale_middle].sum(axis=1)
+        # else:
+        #     middles = (
+        #         counts.iloc[:, 0:scale_middle].sum(axis=1)
+        #         + counts.iloc[:, scale_middle] / 2
+        #     )
+        if len(scale) % 2 == 0:
+             middles = (
+                counts.iloc[:, 0:scale_middle].sum(axis=1)
+                + counts.iloc[:, scale_middle] / 2
+            )
+        else:
+            middles = counts.iloc[:, 0:scale_middle].sum(axis=1)
+
+
+        center = middles.max()
+        padding_values = (middles - center).abs()
+        padded_counts = pd.concat([padding_values, counts], axis=1)
+        padded_counts = padded_counts.rename({0: ""}, axis=1)
 
     # Reverse rows to keep the questions in order
     # (Otherwise, the plot function shows the last one at the top.)
@@ -138,9 +161,11 @@ def plot_counts(
         stacked=True, color=colors, figsize=figsize, **kwargs
     )
 
-    # Draw center line
-    center_line = axes.axvline(center, linestyle="--", color="black", alpha=0.5)
-    center_line.set_zorder(-1)
+
+    # Draw center line if requested
+    if show_center_line:
+        center_line = axes.axvline(center, linestyle="--", color="black", alpha=0.5)
+        center_line.set_zorder(-1)
 
     # Compute and show x labels
     max_width = int(round(padded_counts.sum(axis=1).max()))
@@ -350,6 +375,8 @@ def plot_likert(
     xtick_interval: typing.Optional[int] = None,
     bar_labels: bool = False,
     bar_labels_color: typing.Union[str, typing.List[str]] = "white",
+    center_displacement: int = 0,
+    show_center_line: bool = True,
     **kwargs,
 ) -> matplotlib.axes.Axes:
     """
@@ -411,6 +438,8 @@ def plot_likert(
         compute_percentages=plot_percentage,
         bar_labels=bar_labels,
         bar_labels_color=bar_labels_color,
+        center_displacement=center_displacement,
+        show_center_line=show_center_line,
         **kwargs,
     )
 
